@@ -18,19 +18,16 @@ public class Restaurant {
     }
 
     public boolean isRestaurantOpen() {
-        if (getCurrentTime().isAfter(openingTime) && getCurrentTime().isBefore(closingTime))
-            return true;
-        else{
-            return false;
-        
-        }
+        openingTime = LocalTime.parse("10:30:00");
+        closingTime = LocalTime.parse("22:00:00");
+        Boolean isRestaurantOpenOrNot = ( getCurrentTime().isAfter( openingTime ) && getCurrentTime().isBefore( closingTime ) ) ;
+        return isRestaurantOpenOrNot;
     }
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
 
     public List<Item> getMenu() {
-        return this.menu;
-        //DELETE ABOVE RETURN STATEMENT AND WRITE CODE HERE-completed
+        return menu;
     }
 
     private Item findItemByName(String itemName){
@@ -65,15 +62,6 @@ public class Restaurant {
 
     public String getName() {
         return name;
-    }
-	//Part3 Implementation
-	public int getMenuTotalAmount(List<String> itemsSelected){
-        int totalAmount =0;
-        for (String itemName : itemsSelected) {
-            Item item = findItemByName(itemName);
-            totalAmount +=item.getPrice();
-        }
-        return totalAmount;
     }
 
 }
